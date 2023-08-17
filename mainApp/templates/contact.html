@@ -1,0 +1,72 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}
+    <title>E-Cart | CONTACT</title>
+{%endblock%}
+
+{% block body %}
+
+<!-- Breadcrumb Start -->
+    <div class="container-fluid">
+        <div class="row px-xl-5">
+            <div class="col-12">
+                <nav class="breadcrumb bg-light mb-30">
+                    <a class="breadcrumb-item text-dark" href="/">Home</a>
+                    <span class="breadcrumb-item active">Contact</span>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
+
+
+    <!-- Contact Start -->
+    <div class="container-fluid">
+        <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4 text-center"><span class="bg-secondary pr-3">Contact Us</span></h2>
+        <div class="row px-xl-5">
+            <div class="col-lg-7 mb-5">
+                <div class="contact-form bg-light p-30">
+                    <div class="text-center bg-success text-light mb-2 p-2">
+                        {% for m in messages %}
+                            {{m}}
+                        {% endfor %}
+                    </div>
+                    <form action="/contact/" method="POST">
+                        {% csrf_token %}
+                        <div class="control-group mb-2">
+                            <input type="text" class="form-control" name="name" placeholder="Your Name" required/> 
+                        </div>
+                        <div class="control-group mb-2">
+                            <input type="email" class="form-control" name="email" placeholder="Your Email" required/>
+                        </div>
+                        <div class="control-group mb-2">
+                            <input type="mobile" class="form-control" name="mobile" placeholder="Your Mobile Number" required/>
+                        </div>
+                        <div class="control-group mb-2">
+                            <input type="text" class="form-control" name="subject" placeholder="Subject" required/>
+                        </div>
+                        <div class="control-group mb-2">
+                            <textarea class="form-control" rows="8" name="message" placeholder="Message" required></textarea>
+                        </div>
+                        <div>
+                            <button class="btn btn-primary py-2 px-4 w-100" type="submit" name="sendMessageButton">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-5 mb-5">
+                <div class="bg-light p-30 mb-30">
+                    <div style="max-width:100%;list-style:none; transition: none;overflow:hidden;width:500px;height:240px;"><div id="canvas-for-googlemap" style="height:100%; width:100%;max-width:100%;"><iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=B-212,+New+Ashok+Nagar,+Delhi&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"></iframe></div><style>#canvas-for-googlemap img.text-marker{max-width:none!important;background:none!important;}img{max-width:none}</style></div>
+                </div>
+                <div class="bg-light p-30 mb-3">
+                    <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>B-412, New Ashok Nagar, Delhi, India</p>
+                    <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i><a href="mailto:jitendrarawat963.com" class="text-dark">jitendrarawat963.com</a></p>
+                    <p class="mb-2"><i class="fa fa-phone-alt text-primary mr-3"></i><a href="tel:7784960372"class="text-dark">+91 7784960372</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact End -->
+
+{% endblock %}
